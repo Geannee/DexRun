@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+/* Reset básico e fonte */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+}
+
+body {
+  overflow: auto; /* permite rolagem quando necessário */
+}
+
+/* Container principal */
+.container-login {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* Lado Esquerdo - Imagem de Fundo */
+.left-side {
+  width: 50%;
+  height: 100%;
+  background: url('img/Login.jpg') center/cover no-repeat;
+  position: relative;
+}
+
+.left-side::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.8) 0%,
+    rgba(255,0,0,0.2) 50%,
+    rgba(0,0,0,0.8) 100%
+  );
+  opacity: 0.8;
+}
+
+/* Lado Direito - Formulário */
+.right-side {
+  width: 50%;
+  height: 100%;
+  background: radial-gradient(
+    ellipse 400% 80% at bottom,
+    rgba(233,79,3,0.3) 20%,
+    transparent 45%
+  ), #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 100px 20px 20px;
+}
+
+/* Logo */
+.logo-container {
+  margin-bottom: 150px;
+  width: 100%;
+  text-align: center;
+}
+
+.logo-container img {
+  max-width: 412px;
+  width: 100%;
+  height: auto;
+}
+
+/* Formulário */
+.form-container {
+  width: 100%;
+  max-width: 596px;
+  color: #fff;
+}
+
+.form-container h2 {
+  font-size: 1.8em;
+  margin-bottom: 30px;
+  text-align: left;
+}
+
+/* Inputs */
+.input-group {
+  margin-bottom: 25px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.9em;
+  color: #ccc;
+}
+
+.input-group input[type="email"],
+.input-group input[type="password"] {
+  width: 100%;
+  height: 40px;
+  padding: 0 5px;
+  background: transparent;
+  border: 1px solid #E94F03;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 1.1em;
+  outline: none;
+}
+
+.input-group input:focus {
+  border-bottom: 1px solid #FF5722;
+}
+
+/* Opções */
+.options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 35px;
+  font-size: 0.9em;
+}
+
+.options .remember-me {
+  display: flex;
+  align-items: center;
+}
+
+.options .remember-me input[type="checkbox"] {
+  margin-right: 8px;
+  accent-color: #FF5722;
+}
+
+.options a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.options a:hover {
+  color: #FF5722;
+}
+
+/* Botão */
+.btn-access {
+  max-width: 593px;
+  width: 100%;
+  height: 40px;
+  margin: 0 auto 35px;
+  background-color: #FF5722;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-access:hover {
+  background-color: #e64a19;
+}
+
+/* Link de cadastro */
+.signup-link {
+  text-align: center;
+  font-size: 0.9em;
+}
+
+.signup-link a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.signup-link a:hover {
+  color: #FF5722;
+}
+
+/* Responsividade */
+@media (max-width: 650px) {
+  .left-side {
+    display: none;
+  }
+
+  .right-side {
+    width: 100%;
+    height: 100vh;
+    padding: 60px 25px 25px;
+  }
+
+  .logo-container img {
+    width: 80%;
+    max-width: 300px;
+    height: auto;
+  }
+
+  .form-container {
+    max-width: 100%;
+  }
+
+  .btn-access {
+    width: 100%;
+  }
+
+  .options {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .form-container h2 {
+    font-size: 1.6em;
+  }
+}

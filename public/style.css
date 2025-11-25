@@ -1,0 +1,299 @@
+/* ...existing code... */
+
+/* ==========================
+   VariÃ¡veis globais / tema
+   - Facilita manutenÃ§Ã£o e troca de cores/padding/breakpoints
+   ========================== */
+:root{
+  --bg: #000;
+  --text: #fff;
+  --muted: #cfcfcf;
+  --accent: #E94F03;       /* laranja principal */
+  --accent-strong: #ff6d2a;
+  --accent-cta: #e64a19;
+  --accent-link: #ff8a50;
+  --input-radius: 10px;
+  --input-border: 2px;
+  --container-padding: 56px;
+  --font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+  --break-lg: 1100px;
+  --break-md: 900px;
+  --break-sm: 420px;
+}
+
+/* ==========================
+   Reset bÃ¡sico / base
+   - Box sizing, fonte padrÃ£o e limpeza de margin/padding
+   ========================== */
+*{
+  box-sizing: border-box
+  ;margin:0;
+  padding:0;
+  font-family:var(--font-family)
+}
+
+html,body{height:100%}
+body{
+  background:var(--bg);
+  color:var(--text);
+  overflow:auto;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ==========================
+   Layout principal
+   - container-cadastro: split screen (left imagem / right formulÃ¡rio)
+   - Em telas pequenas a .left-side Ã© escondida (ver media queries)
+   ========================== */
+.container-cadastro{
+  display:flex;
+  min-height:100vh;
+  width:100%;
+}
+
+/* --------------------
+   LEFT SIDE (imagem)
+   - Background: imagem + gradiente de fallback
+   - width fixa relativa, nÃ£o encolhe (flex-shrink:0)
+   - sobreposiÃ§Ãµes e efeitos (overlay, grain, fade)
+   -------------------- */
+/* Troque a imagem em public/img/ -> 'img/Imagemcadastro.jpg' */
+.left-side{
+  position:relative;
+  width:52%;
+  min-height:100vh;
+  overflow:hidden;
+  flex-shrink:0;
+
+  /* imagem principal + gradiente de fallback para tonalidade quente */
+  background-image: url('img/Imagemcadastro.jpg'),
+                    linear-gradient(180deg,#4b0f06 0%, #000 100%);
+  background-size: cover, cover;
+  background-position: center;
+}
+
+/* Overlay escuro/laranja para aproximar do mockup */
+.left-overlay{
+  position:absolute;
+  inset:0;
+  background: linear-gradient(180deg,
+    rgba(0,0,0,0.55) 0%,
+    rgba(233,79,3,0.18) 30%,
+    rgba(0,0,0,0.9) 80%);
+  mix-blend-mode: multiply;
+  pointer-events:none;
+}
+
+/* Efeito grain/subtle noise */
+.grain{
+  position:absolute;
+  inset:0;
+  background-image: radial-gradient(rgba(0,0,0,0.05) 1px, transparent 1px);
+  background-size:6px 6px;
+  opacity:0.6;
+  mix-blend-mode:overlay;
+  pointer-events:none;
+}
+
+/* Fade inferior para escurecer a base */
+.left-side::after{
+  content:'';
+  position:absolute;
+  left:0; right:0; bottom:0;
+  height:35%;
+  background:linear-gradient(0deg, rgba(0,0,0,0.98), rgba(0,0,0,0));
+  pointer-events:none;
+}
+
+/* --------------------
+   RIGHT SIDE (painel do formulÃ¡rio)
+   - Painel preto com leve brilho/gradiente e padding interno
+   -------------------- */
+.right-side{
+  width:48%;
+  min-height:100vh;
+  padding:56px 64px;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  justify-content:flex-start;
+
+  /* leve brilho laranja no canto inferior esquerdo + cor base preta */
+  background: radial-gradient(ellipse at bottom left,
+                rgba(233,79,3,0.06) 0%, transparent 40%),
+                #000;
+}
+
+/* ==========================
+   Logo / topo do formulÃ¡rio
+   - centralizado horizontalmente dentro do painel
+   ========================== */
+.logo-container{
+  width:100%;
+  text-align:center;
+  margin-bottom:30px;
+  display:block;
+}
+.logo-container img{
+  display:block;
+  margin:0 auto;
+  height:auto;
+  max-width:220px;
+  width:220px;
+  filter:brightness(1.05);
+}
+
+/* ==========================
+   FormulÃ¡rio: estrutura e tipografia
+   ========================== */
+.form-container{width:100%;max-width:620px}
+.cad-form{width:100%}
+
+.cad-form h3{
+  color:var(--text);
+  font-size:1.25rem;
+  margin:8px 0 18px 0;
+}
+
+/* Grid para inputs (duas colunas em telas grandes) */
+.input-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:22px;
+  margin-bottom:18px;
+}
+
+/* Grupo de input simples e variaÃ§Ã£o full width */
+.input-group{margin-bottom:18px}
+.input-group.full{grid-column:1/-1}
+
+/* Label e indicaÃ§Ã£o de campo obrigatÃ³rio */
+.input-group label{
+  display:block;
+  margin-bottom:8px;
+  color:var(--muted);
+  font-size:0.95rem;
+}
+.required{color:var(--accent);margin-left:6px;font-weight:600}
+
+/* ==========================
+   Inputs (campo de texto)
+   - Borda laranja, fundo transparente, foco com glow
+   ========================== */
+.input{
+  width:100%;
+  padding:12px 14px;
+  background:transparent;
+  border:var(--input-border) solid rgba(233,79,3,0.9);
+  border-radius:var(--input-radius);
+  color:var(--text);
+  font-size:1rem;
+  outline:none;
+  transition:box-shadow .18s ease, border-color .15s ease;
+}
+.input::placeholder{color:rgba(255,255,255,0.25)}
+.input:focus{
+  border-color:#ff7a3a;
+  box-shadow:0 0 0 6px rgba(233,79,3,0.06), 0 6px 24px rgba(0,0,0,0.6);
+}
+
+/* ==========================
+   Checkbox customizado
+   - usamos label ::before/::after para desenhar caixa e check
+   - o input real fica invisÃ­vel
+   ========================== */
+.checkbox-group{display:flex;gap:12px;align-items:flex-start;margin-bottom:14px}
+.checkbox-group input[type="checkbox"]{
+  width:0;height:0;opacity:0;position:absolute;
+}
+.checkbox-group label{
+  position:relative;padding-left:30px;color:var(--muted);cursor:pointer;
+}
+.checkbox-group label::before{
+  content:'';position:absolute;left:0;top:2px;width:18px;height:18px;
+  border:2px solid rgba(233,79,3,0.9);border-radius:6px;
+}
+.checkbox-group label::after{
+  content:'\2713';position:absolute;left:3px;top:-1px;color:rgba(233,79,3,0.95);
+  opacity:0;font-weight:700;
+}
+/* mostra o check quando o input estÃ¡ marcado */
+.checkbox-group input[type="checkbox"]:checked + label::after{opacity:1}
+.checkbox-group a{color:var(--accent-link);text-decoration:underline}
+
+/* ==========================
+   BotÃ£o principal (criar / enviar)
+   - gradiente laranja + sombra suave
+   ========================== */
+.btn-create{
+  display:block;
+  width:100%;
+  background:linear-gradient(90deg, var(--accent-strong), var(--accent-cta));
+  color:var(--text);
+  border:none;
+  padding:12px 18px;
+  font-size:1.05rem;
+  border-radius:var(--input-radius);
+  cursor:pointer;
+  margin-top:18px;
+  box-shadow:0 6px 20px rgba(230,74,25,0.16);
+  transition:transform .12s ease, filter .12s ease;
+}
+.btn-create:hover{filter:brightness(.98);transform:translateY(-1px)}
+
+/* Links e textos auxiliares */
+a{color:var(--accent-link)}
+
+.back-link {
+  display: block;
+  text-align: center;
+  margin-top: 18px;
+  font-size: 0.9rem;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.back-link:hover { color: var(--text); }
+
+/* ==========================
+   RESPONSIVO
+   - ajustes progressivos em breakpoints definidos nas variÃ¡veis
+   - em telas pequenas (.left-side) Ã© escondido para priorizar o formulÃ¡rio
+   ========================== */
+@media (max-width:1100px){
+  .left-side{width:46%}
+  .right-side{width:54%;padding:48px}
+  .logo-container img{max-width:180px}
+}
+
+@media (max-width:900px){
+  /* dispositivo mÃ©dio / mobile: esconde imagem, formulÃ¡rio ocupa 100% */
+  .left-side{display:none}
+  .right-side{
+    width:100%;
+    padding:36px 24px;
+    align-items:center;
+  }
+  .logo-container{text-align:center}
+  .logo-container img{width:220px}
+  .form-container{max-width:760px}
+  .input-grid{grid-template-columns:1fr;gap:14px}
+  .input-group.full{margin-bottom:12px}
+}
+
+@media (max-width:420px){
+  .right-side{padding:22px}
+  .logo-container img{width:160px}
+  .input{padding:12px}
+  .cad-form h3{font-size:1.05rem}
+  .btn-create{padding:12px}
+}
+
+/* ==========================
+   ObservaÃ§Ãµes de manutenÃ§Ã£o
+   - Para trocar a imagem do lado esquerdo: substituir 'img/Imagemcadastro.jpg'
+     por sua imagem em public/img/ e ajustar background-position/size se necessÃ¡rio.
+   ========================== */
+
+/* ...existing code... */
+/* comeca aqui o css de criar treino */

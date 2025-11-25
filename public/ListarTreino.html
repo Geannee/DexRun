@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DEXRUN | Meus Treinos</title>
+  <link rel="stylesheet" href="Listatreino.css" />
+</head>
+<body>
+  <header class="main-header">
+    <div class="logo">
+      <img src="img/Logo.png" alt="DEXRUN" />
+    </div>
+    <nav class="nav">
+      <a href="home.html">Início</a>
+      <a href="criarTreino.html">Criar Evento</a>
+      <a href="#">Contato</a>
+    </nav>
+    <div class="header-right">
+      <div class="search-bar">
+        <input type="text" placeholder="Buscar..." />
+      </div>
+      <div id="userInfo" class="user-info"></div>
+      <a href="home.html" id="loginButton" class="btn-login">Iniciar</a>
+      <button id="logoutButton" class="btn-logout" style="display: none;">Sair</button>
+    </div>
+  </header>
+
+  <main class="main-container">
+  <div class="content-wrapper">
+    <div class="main-content">
+      <h2>Meus Treinos</h2>
+
+      <div id="listaDeTreinos" class="cards-container">
+        <!-- Os cards serão inseridos aqui via JS -->
+        <p>Carregando seus treinos...</p>
+      </div>
+
+      <aside class="sidebar">
+        <div id="eventoModificadoContainer" style="display: none;">
+          <h3>Modificado Recentemente</h3>
+          <div id="eventoModificado"></div>
+        </div>
+      </aside>
+    </div>
+  </div>
+<!--performance, mais informacao-->
+<section class="performance-section">
+  <h2>Minha performance</h2>
+  <p class="performance-subtitle">Um clique, mil quilômetros de histórias.</p>
+
+  <div class="performance-grid">
+    <!-- Estatísticas principais -->
+    <div class="stat-box">
+      <h3>Distância total</h3>
+      <p>185,3 Km</p>
+    </div>
+    <div class="stat-box">
+      <h3>Elevação acumulada</h3>
+      <p>1550 m</p>
+    </div>
+    <div class="stat-box">
+      <h3>Atividades</h3>
+      <p>87%</p>
+    </div>
+  </div>
+
+  <!-- Estatísticas sociais -->
+  <div class="social-stats">
+    <h3>Estatísticas sociais</h3>
+    <p><strong>Seguidores:</strong> 128</p>
+    <p><strong>Seguindo:</strong> 45</p>
+  </div>
+
+  <!-- Conquistas -->
+  <div class="trophies">
+    <h3>Minhas conquistas</h3>
+    <div class="trophy-row">
+      <div class="trophy-card orange">Troféu maratonista<br><span>Outubro 2023</span></div>
+      <div class="trophy-card blue">Troféu maratonista<br><span>Outubro 2023</span></div>
+      <div class="trophy-card green">Troféu maratonista<br><span>Outubro 2023</span></div>
+      <div class="trophy-card purple">Troféu maratonista<br><span>Outubro 2023</span></div>
+    </div>
+  </div>
+</section>
+</main>
+  <script src="ListarTreino.js" defer></script>
+<footer class="dexrun-footer">
+  <div class="footer-grid">
+    
+    <!-- Coluna 1: Inscrição e redes sociais -->
+    <div class="footer-column">
+      <h3>Se inscreva em nossos canais</h3>
+      <form class="footer-form">
+        <input type="email" placeholder="Digite seu e-mail" />
+        <button type="submit">Inscrever-se</button>
+      </form>
+      <div class="social-icons">
+        <a href="#"><img src="img/icone/Instagran.svg" alt="Instagram" /></a>
+        <a href="#"><img src="img/icone/Behance.svg" alt="Behance" /></a>
+        <a href="#"><img src="img/icone/youtube.svg" alt="YouTube" /></a>
+        <a href="https://wa.me/5561983116472"><img src="img/icone/whatsapp.svg" alt="WhatsApp" /></a>
+      </div>
+    </div>
+
+    <!-- Coluna 2: Links rápidos -->
+    <div class="footer-column">
+      <h4>Links rápidos</h4>
+      <ul class="footer-links">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="#">Destaques</a></li>
+        <li><a href="ListarTreino.html">Eventos</a></li>
+        <li><a href="home.html">Depoimentos</a></li>
+        <li><a href="#">Fale conosco</a></li>
+      </ul>
+    </div>
+
+    <!-- Coluna 3: Institucional -->
+    <div class="footer-column">
+      <img src="img/Logo.png" alt="DexRun" class="footer-logo" />
+      <p class="footer-description">
+        Reunir em um único local informações sobre corridas de rua, maratonas, eventos esportivos e treinos.<br>
+        Criar uma comunidade de corredores e entusiastas da corrida.<br>
+        Promover a prática esportiva regular como meio de saúde física e mental.
+      </p>
+    </div>
+  </div>
+
+  <!-- Rodapé inferior -->
+  <div class="footer-bottom">
+    <p><strong>DexRun</strong> – Onde corredores encontram desafios.</p>
+    <p>Rua Lívio Berruti, 123 — Jardim Olímpico, São Paulo — SP — CEP 04567-89</p>
+    <p><a href="mailto:contact@dexrun.com">contact@dexrun.com</a> | +55 (61) 98311-6472</p>
+  </div>
+</footer>
+
+</body>
+</html>

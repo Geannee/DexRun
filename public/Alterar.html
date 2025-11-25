@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DEXRUN | Alterar Evento</title>
+  <!-- Fonte Montserrat -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- CSS -->
+  <link rel="stylesheet" href="criarTreino.css" />
+</head>
+<body>
+
+  <!-- Cabeçalho fixo -->
+  <header class="main-header">
+    <div class="logo">
+      <img src="img/Logo.png" alt="DEXRUN" />
+    </div>
+    <div class="header-right">
+      <div class="search-bar">
+        <input type="text" placeholder="Buscar..." />
+      </div>
+      <div id="userInfo" class="user-info"></div>
+      <a href="/login" class="btn-login">Login</a>
+    </div>
+  </header>
+
+  <!-- Container principal -->
+  <div class="main-container">
+    <div class="form-wrapper">
+      <h2>Alterar Evento</h2>
+      <p id="mensagemBoasVindas" class="welcome-message"></p>
+      
+      <form id="alterarForm">
+        <!-- IDs ocultos -->
+        <input type="hidden" id="usuario_id" name="usuario_id" />
+        <input type="hidden" id="id_treino" name="id_treino" />
+
+        <!-- Nome -->
+        <div class="form-group">
+          <label for="nome_treino">Nome do Treino</label>
+          <input type="text" id="nome_treino" name="nome_treino" required />
+        </div>
+
+        <!-- Período e Data -->
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label for="periodo">Período</label>
+            <select id="periodo" name="periodo">
+              <option value="">Selecione</option>
+              <option value="Manhã">Manhã</option>
+              <option value="Tarde">Tarde</option>
+              <option value="Noite">Noite</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="data">Data</label>
+            <input type="date" id="data" name="data" />
+          </div>
+        </div>
+
+        <!-- Cidade e Estado -->
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label for="cidade">Cidade</label>
+            <input type="text" id="cidade" name="cidade" />
+          </div>
+          <div class="form-group">
+            <label for="estado">Estado</label>
+            <select id="estado" name="estado">
+              <option value="">Selecione</option>
+              <option value="SP">SP</option>
+              <option value="RJ">RJ</option>
+              <option value="MG">MG</option>
+              <option value="RS">RS</option>
+              <option value="BA">BA</option>
+              <option value="DF">DF</option>
+              <option value="GO">GO</option>
+              <option value="MA">MA</option>
+              <option value="PE">PE</option>
+              <option value="PB">PB</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Tipo e Km -->
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label for="tipo_treino">Tipo de Treino</label>
+            <select id="tipo_treino" name="tipo_treino">
+              <option value="">Selecione</option>
+              <option value="Caminhada">Caminhada</option>
+              <option value="Corrida">Corrida</option>
+              <option value="Sprint">Sprint</option>
+              <option value="Longão">Longao</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="km_por_percurso">Km por Percurso</label>
+            <select id="km_por_percurso" name="km_por_percurso">
+              <option value="">Selecione</option>
+              <option value="3">3 km</option>
+              <option value="5">5 km</option>
+              <option value="10">10 km</option>
+              <option value="21">21 km</option>
+              <option value="42">42 km</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Botões -->
+        <div class="button-group">
+          <button type="submit" class="btn btn-create">Salvar Alterações</button>
+          <a href="/ListarTreino.html" class="btn btn-cancel">Voltar</a>
+        </div>
+      </form>
+
+      <!-- Link alternativo estilo "back-link" -->
+      <a href="/ListarTreino.html" class="back-link">Voltar para lista</a>
+    </div>
+  </div>
+  
+  <!-- Script externo -->
+  <script src="alterarTreino.js"></script>
+</body>
+</html>

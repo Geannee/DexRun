@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DEXRUN | Login</title>
+  <link rel="stylesheet" href="Login.css">
+</head>
+<body>
+  <div class="container-login">
+    <!-- Lado esquerdo (imagem de fundo) -->
+    <div class="left-side"></div>
+
+    <!-- Lado direito (formulário) -->
+    <div class="right-side">
+      <div class="logo-container">
+        <img src="img/Logo.png" alt="DEXRUN">
+      </div>
+
+      <div class="form-container">
+        <h2>Login</h2>
+        <form id="loginForm">
+          <div class="input-group">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com" required>
+          </div>
+
+          <div class="input-group">
+            <label for="password">Senha</label>
+            <input type="password" id="password" name="password" placeholder="********" required>
+          </div>
+
+          <div class="options">
+            <div class="remember-me">
+              <input type="checkbox" id="rememberMe">
+              <label for="rememberMe">Lembre-me</label>
+            </div>
+            <a href="/recuperar-senha">Esqueceu a senha?</a>
+          </div>
+
+          <button type="submit" class="btn-access">Acessar</button>
+        </form>
+
+        <div class="signup-link">
+          Não tem uma conta? <a href="/CadastrarUsuario.html">Cadastre-se</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Lógica de login (simples, para demonstração)
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      fetch('/api/users/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      })
+      .then(res => {
+        if (!res.ok) {
+          return res.json().then(err => { throw new Error(err.error || 'Falha no login') });
+        }
+        return res.json();
+      })
+      .then(user => {
+        localStorage.setItem('userId', user.id);
+        localStorage.setItem('userName', user.nome);
+        window.location.href = '/ListarTreino.html';
+      })
+      .catch(error => {
+        alert(error.message);
+      });
+    });
+  </script>
+</body>
+</html>

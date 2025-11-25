@@ -1,0 +1,233 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+/* Variáveis */
+:root {
+  --header-height: 60px;
+  --bg: #000;
+  --text: #fff;
+  --muted: #cfcfcf;
+  --accent: #E94F03;       /* laranja principal */
+  --accent-strong: #ff6d2a;
+  --accent-cta: #e64a19;
+  --accent-link: #ff8a50;
+  --input-radius: 10px;
+  --input-border: 2px;
+  --container-padding: 56px;
+  --font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+  --break-lg: 1100px;
+  --break-md: 900px;
+  --break-sm: 420px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-family);
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background-color: #000;
+  /* Imagem de fundo com gradiente por cima para escurecer */
+  background:
+    linear-gradient(90deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%),
+    url('img/CriarTreino.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: var(--text);
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* --- Cabeçalho --- */
+.main-header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--header-height);
+  background-color: #000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  z-index: 100;
+}
+
+.main-header .logo img {
+  height: 35px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* --- Barra de busca --- */
+.search-bar {
+  position: relative;
+  width: 250px;
+}
+
+.search-bar input {
+  width: 100%;
+  height: 40px;
+  background: transparent;
+  border: 1px solid var(--accent);
+  border-radius: 5px;
+  color: var(--text);
+  padding-left: 15px;
+  padding-right: 40px;
+  font-size: 1em;
+}
+
+.search-bar input:focus {
+  outline: none;
+  border-color: var(--accent-strong);
+}
+
+.user-info {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.user-info span {
+  font-weight: bold;
+  color: var(--accent-strong);
+}
+
+.btn-login {
+  background-color: var(--accent);
+  color: var(--text);
+  padding: 8px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+.btn-login:hover { background-color: var(--accent-strong); }
+
+/* --- Container principal --- */
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 20px;
+  min-height: calc(100vh - var(--header-height));
+}
+
+/* --- Formulário --- */
+.form-wrapper {
+  width: 100%;
+  max-width: 700px;
+  padding: 0; /* Removemos o padding para alinhar com a página */
+  background-color: transparent; /* Remove o fundo do card */
+  backdrop-filter: none; /* Remove o desfoque */
+  border-radius: 0;
+  border: none; /* Remove a borda */
+  text-align: center;
+}
+
+.form-wrapper h2 {
+  font-size: 2.2em;
+  margin-bottom: 30px;
+  color: var(--text);
+  text-align: center;
+}
+
+/* --- Campos --- */
+.form-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 8px;
+  text-align: left;
+  font-size: 1em;
+  color: var(--muted);
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+select {
+  width: 100%;
+  height: 45px;
+  padding: 12px 14px;
+  background: rgba(0, 0, 0, 0.3); /* Fundo preto semi-transparente para destaque */
+  border: 1px solid var(--accent);
+  border-radius: var(--input-radius);
+  color: var(--text);
+  font-size: 1rem;
+  outline: none;
+}
+
+/* Estilizando as opções do select */
+select option {
+  background: #1a1a1a; /* Fundo preto para a lista de opções */
+  color: var(--text); /* Texto branco */
+}
+
+select {
+  appearance: none;
+  /* Define a cor de fundo separadamente */
+  background-color: rgba(0, 0, 0, 0.3);
+  /* Adiciona a imagem da seta por cima */
+  background-image: url("data:image/svg+xml;utf8,<svg fill='%23E94F03' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 24px;
+}
+
+.form-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* --- Botões --- */
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.btn {
+  width: 160px;
+  height: 45px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.btn-create {
+  background: linear-gradient(90deg, #ff6a00, #ff8c00);
+  color: #fff;
+  border-color: #ff6a00;
+}
+
+.btn-cancel {
+  background-color: transparent;
+  color: #ff6a00;
+  border-color: #ff6a00;
+}
+
+.back-link {
+  display: block;
+  text-align: center;
+  margin-top: 12px;
+  font-size: 0.9rem;
+  color: var(--muted);
+  text-decoration: none;
+}

@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+/* Variáveis de Tema */
+:root {
+  --bg: #000;
+  --text: #fff;
+  --muted: #cfcfcf;
+  --accent: #E94F03;
+  --accent-strong: #ff6d2a;
+  --accent-cta: #e64a19;
+  --accent-link: #ff8a50;
+  --input-radius: 10px;
+  --font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Reset Básico */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+}
+
+html, body {
+  height: 100%;
+}
+
+body.pg-recovery {
+  background: var(--bg);
+  color: var(--text);
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Layout Split Screen */
+.container-recovery {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Lado Esquerdo (Imagem) */
+.container-recovery .left-side {
+  position: relative;
+  width: 50%;
+  min-height: 100vh;
+  overflow: hidden;
+  flex-shrink: 0;
+  /* Usando a imagem para a tela de recuperação de senha */
+  background-image: url('img/RecSenha.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Lado Direito (Formulário) */
+.container-recovery .right-side {
+  width: 50%;
+  min-height: 100vh;
+  padding: 56px 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(ellipse at bottom left, rgba(233,79,3,0.08) 0%, transparent 50%), #000;
+}
+
+/* Logo */
+.logo-container {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.logo-container img {
+  max-width: 280px;
+  width: 100%;
+}
+
+/* Container do Formulário */
+.form-container {
+  width: 100%;
+  max-width: 500px;
+}
+
+.form-container h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.form-container .subtitle {
+  color: var(--muted);
+  text-align: center;
+  margin-bottom: 30px;
+  line-height: 1.5;
+}
+
+/* Campos de Input */
+.input-group {
+  margin-bottom: 25px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--muted);
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px 14px;
+  background: transparent;
+  border: 2px solid var(--accent);
+  border-radius: var(--input-radius);
+  color: var(--text);
+  font-size: 1rem;
+  outline: none;
+}
+
+/* Botão de Enviar */
+.btn-send {
+  display: block;
+  width: 100%;
+  background: linear-gradient(90deg, var(--accent-strong), var(--accent-cta));
+  color: var(--text);
+  border: none;
+  padding: 12px;
+  font-size: 1.05rem;
+  font-weight: bold;
+  border-radius: var(--input-radius);
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+/* Link de Voltar */
+.back-link {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.back-link a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+/* Responsividade */
+@media (max-width: 900px) {
+  .container-recovery .left-side {
+    display: none;
+  }
+  .container-recovery .right-side {
+    width: 100%;
+    padding: 30px;
+  }
+}

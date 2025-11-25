@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DEXRUN | Criar Treino</title>
+  <link rel="stylesheet" href="criarTreino.css" />
+</head>
+<body>
+
+  <header class="main-header">
+    <div class="logo">
+      <img src="img/Logo.png" alt="DEXRUN" />
+    </div>
+    <div class="header-right">
+      <div class="search-bar">
+        <input type="text" placeholder="Buscar..." />
+      </div>
+      <div id="userInfo" class="user-info"></div>
+      <a href="ListarTreino.html" class="btn-login">Listar Eventos cadastrados</a>
+    </div>
+  </header>
+
+  <div class="main-container">
+    <div class="form-wrapper">
+      <h2>Criar treino</h2>
+      
+      <form id="formTreino">
+        <input type="hidden" id="usuario_id" name="usuario_id" />
+
+        <div class="form-group">
+          <label for="nome_treino">Nome do Treino</label>
+          <input type="text" id="nome_treino" name="nome_treino" required />
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label for="periodo">Período</label>
+            <select id="periodo" name="periodo" required>
+              <option value="">Selecione</option>
+              <option value="Manhã">Manhã</option>
+              <option value="Tarde">Tarde</option>
+              <option value="Noite">Noite</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="data">Data</label>
+            <input type="date" id="data" name="data" />
+          </div>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label for="cidade">Cidade</label>
+            <input type="text" id="cidade" name="cidade" />
+          </div>
+          <div class="form-group">
+            <label for="estado">Estado</label>
+            <select id="estado" name="estado">
+              <option value="">Selecione</option>
+              <option value="SP">SP</option>
+              <option value="RJ">RJ</option>
+              <option value="MG">MG</option>
+              <option value="RS">RS</option>
+              <option value="BA">BA</option>
+              <option value="DF">DF</option>
+              <option value="GO">GO</option>
+              <option value="MA">MA</option>
+              <option value="PE">PE</option>
+              <option value="PB">PB</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label for="tipo_treino">Tipo de Treino</label>
+            <select id="tipo_treino" name="tipo_treino" required>
+              <option value="">Selecione</option>
+              <option value="Caminhada">Caminhada</option>
+              <option value="Corrida">Corrida</option>
+              <option value="Sprint">Sprint</option>
+              <option value="Longao">Longao</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="km_por_percurso">Km por Percurso</label>
+            <select id="km_por_percurso" name="km_por_percurso" required>
+              <option value="">Selecione</option>
+              <option value="3">3 km</option>
+              <option value="5">5 km</option>
+              <option value="10">10 km</option>
+              <option value="21">21 km</option>
+              <option value="42">42 km</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="button-group">
+          <button type="submit" class="btn btn-create">Cadastrar</button>
+          <button type="button" class="btn btn-cancel" id="btnCancelar">Cancelar</button>
+        </div>
+
+        <a href="home.html" class="back-link">Voltar</a>
+      </form>
+    </div>
+  </div>
+
+  <script src="criarTreino.js" defer></script>
+</body>
+</html>
+  

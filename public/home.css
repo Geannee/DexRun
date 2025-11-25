@@ -1,0 +1,364 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&display=swap');
+
+/* Variáveis de Tema */
+:root {
+  --bg: #000;
+  --text: #fff;
+  --muted: #cfcfcf;
+  --accent: #E94F03;
+  --font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Reset Básico */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+}
+
+body {
+  /* Novo fundo com textura de eclipse */
+  background-color: #1E1E1E; /* Cor de fundo base */
+  background-image: radial-gradient(ellipse at 70% 30%, 
+    rgba(233, 79, 3, 0.15) 0%, 
+    transparent 50%);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  font-family: Montserrat, sans-serif;
+}
+
+/* Estilos Gerais */
+.container {
+  display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+.left {
+      font-size: 48px;
+      max-width: 50%;
+    }
+    .right {
+      text-align: right;
+      max-width: 40%;
+    }
+    .description {
+      font-size: 16px;
+      margin-top: 10px;
+      color: #ccc;
+    }
+/* Topbar */
+.topbar {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.topbar__wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-weight: 900;
+  font-size: 1.5rem;
+  color: var(--accent);
+}
+
+.nav a {
+  color: var(--text);
+  text-decoration: none;
+  margin-left: 1.5rem;
+}
+
+.actions .btn {
+  margin-left: 1rem;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.btn--solid {
+  background-color: var(--accent);
+  color: var(--text);
+}
+
+.btn--ghost {
+  border: 1px solid var(--accent);
+  color: var(--accent);
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 5rem 0;
+  padding-top: calc(5rem + 80px); /* adiciona 80px extras no topo */
+  background-image: 
+    linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+    url('img/capa.png');
+  background-size: cover;
+  background-position: center top; /* imagem começa no topo do container */
+}
+h1 {
+  font-size: 24px; /* define a fonte menor */
+  font-weight: normal; /* opcional: tira o peso exagerado do h1 */
+  line-height: 1.4;    /* opcional: melhora a legibilidade */
+}
+
+
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: var(--muted);
+  margin-bottom: 2rem;
+}
+
+/* Seção de Destaques */
+.destaques {
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.destaques h2 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.section-desc {
+  color: var(--muted);
+  margin-bottom: 3rem;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+}
+
+.card {
+  background-color: #1a1a1a;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* Estilo específico para os cards com imagem */
+.card--image-only {
+  width: 350px;
+  height: 350px;
+  background-color: transparent; /* Remove o fundo para a imagem aparecer */
+}
+
+.card--image-only img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Garante que a imagem preencha o card sem distorcer */
+}
+
+/* Rodapé */
+.footer {
+  background-color: #111;
+  padding: 2rem 0;
+  margin-top: 4rem;
+}
+
+.footer__wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer__nav a {
+  color: var(--muted);
+  text-decoration: none;
+  margin-left: 1.5rem;
+}
+
+
+.card-container {
+  display: flex;
+  gap: 30px;              /* Espaço entre os cards */
+  justify-content: center;/* Centraliza os cards */
+  flex-wrap: wrap;        /* Permite quebrar linha em telas pequenas */
+  padding: 40px 20px;
+}
+
+.testimonial-card {
+  background-color: #111;
+  border: 2px solid #E94F03;
+  border-radius: 12px;
+  padding: 20px;
+  max-width: 350px;
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+}
+
+.card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.card-info h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.card-info .cargo {
+  font-size: 0.9rem;
+  color: #cfcfcf;
+}
+
+.card-icon-link img {
+  width: 24px;
+  height: 24px;
+  background-color: #E94F03;
+  border-radius: 50%;
+  padding: 4px;
+}
+.card-icon-comment img {
+  width: 24px;
+  height: 24px;
+}
+.card-text {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: #ddd;
+}
+
+.card-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.stars {
+    display: flex;
+    gap: 4px;
+  }
+.stars img {
+  width: 20px;
+  height: 20px;
+  margin-right: 4px;
+  filter: invert(64%) sepia(87%) saturate(747%) hue-rotate(16deg) brightness(95%) contrast(92%);
+}
+.comment-icon {
+    width: 24px;
+    height: 24px;
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
+  }
+.footer {
+  background-color: #111;
+  color: #fff;
+  padding: 40px 60px;
+  font-family: Arial, sans-serif;
+}
+.footer-logo {
+  width: 120px;   /* ajuste conforme necessário */
+  margin-bottom: 16px;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.footer-column {
+  flex: 1;
+  min-width: 250px;
+}
+
+.subscribe-form {
+  display: flex;
+  gap: 10px;
+  margin: 16px 0;
+}
+
+.subscribe-form input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+}
+
+.subscribe-form button {
+  padding: 10px 16px;
+  background-color: #f44336;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.social-icons a img {
+  width: 24px;
+  margin-right: 12px;
+  transition: transform 0.3s;
+  filter: invert(100%) brightness(100%) contrast(100%);
+}
+
+.social-icons a:hover img {
+  transform: scale(1.1);
+  filter: invert(60%) sepia(100%) saturate(500%) hue-rotate(200deg) brightness(100%) contrast(90%);
+}
+
+.quick-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.quick-links li {
+  margin-bottom: 8px;
+}
+
+.quick-links a {
+  color: #ccc;
+  text-decoration: none;
+}
+
+.quick-links a:hover {
+  color: #fff;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.brand-description {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #bbb;
+}
+
