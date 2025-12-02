@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel Administrativo - Dentista</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+  <header>
+    <h1>🦷 Painel do Dentista</h1>
+    <div style="display: flex; gap: 10px;">
+      <button onclick="logout()" class="btn-voltar" style="cursor: pointer; background: rgba(244, 67, 54, 0.2); border: 2px solid #f44336;">🔓 Sair</button>
+      <a href="index.html" class="btn-voltar">← Voltar</a>
+    </div>
+  </header>
+
+  <nav class="menu-admin">
+    <button class="menu-item active" data-secao="agenda">📅 Agenda</button>
+    <button class="menu-item" data-secao="horarios">⏰ Horários</button>
+    <button class="menu-item" data-secao="pacientes-dia">👥 Pacientes do Dia</button>
+    <button class="menu-item" onclick="window.location.href='lista-pacientes.html'">📋 Lista de Pacientes</button>
+    <button class="menu-item" onclick="window.location.href='relatorio-agendamentos.html'">🖨️ Relatórios</button>
+  </nav>
+
+  <main>
+    <!-- Seção: Agenda de Consultas -->
+    <section id="secao-agenda" class="secao-admin active">
+      <h2>Agenda de Consultas</h2>
+      
+      <div class="filtros-agenda">
+        <div class="grupo-filtro">
+          <label>Data Início</label>
+          <input type="date" id="dataInicio">
+        </div>
+        <div class="grupo-filtro">
+          <label>Data Fim</label>
+          <input type="date" id="dataFim">
+        </div>
+        <div class="grupo-filtro">
+          <label>Status</label>
+          <select id="filtroStatus">
+            <option value="">Todos</option>
+            <option value="pendente">Pendente</option>
+            <option value="confirmado">Confirmado</option>
+            <option value="concluido">Concluído</option>
+            <option value="cancelado">Cancelado</option>
+          </select>
+        </div>
+        <button id="btnFiltrarAgenda" class="btn-primary">🔍 Filtrar</button>
+      </div>
+
+      <div id="loadingAgenda" class="loading">Carregando agenda...</div>
+      
+      <div id="tabelaAgenda" style="display:none;">
+        <table>
+          <thead>
+            <tr>
+              <th>Data</th>
+              <th>Horário</th>
+              <th>Paciente</th>
+              <th>Telefone</th>
+              <th>Procedimento</th>
+              <th>Status</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody id="listaAgenda"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Seção: Configuração de Horários -->
+    <section id="secao-horarios" class="secao-admin">
+      <h2>Configurar Horários de Atendimento</h2>
+      
+      <div class="config-horarios">
+        <div class="dia-semana-config">
+          <h3>📋 Dias e Horários de Atendimento</h3>
+          <p class="info-text">Configure seus dias e horários de trabalho</p>
+          
+          <div class="lista-dias">
+            <div class="dia-item">
+              <input type="checkbox" id="segunda" checked>
+              <label for="segunda">Segunda-feira</label>
+              <div class="horarios-dia">
+                <input type="time" value="09:00" class="hora-inicio">
+                <span>até</span>
+                <input type="time" value="17:00" class="hora-fim">
+              </div>
+            </div>
+
+            <div class="dia-item">
+              <input type="checkbox" id="terca" checked>
+              <label for="terca">Terça-feira</label>
+              <div class="horarios-dia">
+                <input type="time" value="09:00" class="hora-inicio">
+                <span>até</span>
+                <input type="time" value="17:00" class="hora-fim">
+              </div>
+            </div>
+
+            <div class="dia-item">
+              <input type="checkbox" id="quarta" checked>
+              <label for="quarta">Quarta-feira</label>
+              <div class="horarios-dia">
+                <input type="time" value="09:00" class="hora-inicio">
+                <span>até</span>
+                <input type="time" value="17:00" class="hora-fim">
+              </div>
+            </div>
+
+            <div class="dia-item">
+              <input type="checkbox" id="quinta" checked>
+              <label for="quinta">Quinta-feira</label>
+              <div class="horarios-dia">
+                <input type="time" value="09:00" class="hora-inicio">
+                <span>até</span>
+                <input type="time" value="17:00" class="hora-fim">
+              </div>
+            </div>
+
+            <div class="dia-item">
+              <input type="checkbox" id="sexta" checked>
+              <label for="sexta">Sexta-feira</label>
+              <div class="horarios-dia">
+                <input type="time" value="09:00" class="hora-inicio">
+                <span>até</span>
+                <input type="time" value="17:00" class="hora-fim">
+              </div>
+            </div>
+
+            <div class="dia-item">
+              <input type="checkbox" id="sabado">
+              <label for="sabado">Sábado</label>
+              <div class="horarios-dia">
+                <input type="time" value="09:00" class="hora-inicio">
+                <span>até</span>
+                <input type="time" value="13:00" class="hora-fim">
+              </div>
+            </div>
+
+            <div class="dia-item">
+              <input type="checkbox" id="domingo">
+              <label for="domingo">Domingo</label>
+              <div class="horarios-dia">
+                <input type="time" value="09:00" class="hora-inicio">
+                <span>até</span>
+                <input type="time" value="13:00" class="hora-fim">
+              </div>
+            </div>
+          </div>
+
+          <button id="btnSalvarHorarios" class="btn-primary">💾 Salvar Configuração</button>
+          <div id="mensagemHorarios"></div>
+        </div>
+
+        <div class="bloqueio-datas">
+          <h3>🚫 Bloquear Datas Específicas</h3>
+          <p class="info-text">Adicione feriados ou dias de folga</p>
+          
+          <div class="form-bloqueio">
+            <input type="date" id="dataBloqueio">
+            <input type="text" id="motivoBloqueio" placeholder="Motivo (ex: Feriado, Férias)">
+            <button id="btnBloquearData" class="btn-secondary">➕ Bloquear</button>
+          </div>
+
+          <div id="listaBloqueios">
+            <!-- Lista de datas bloqueadas será inserida aqui -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Seção: Pacientes do Dia -->
+    <section id="secao-pacientes-dia" class="secao-admin">
+      <h2>Pacientes Agendados por Dia</h2>
+      
+      <div class="filtro-dia">
+        <div class="grupo-filtro">
+          <label>Selecione a Data</label>
+          <input type="date" id="dataPacientes">
+        </div>
+        <button id="btnBuscarPacientesDia" class="btn-primary">🔍 Buscar</button>
+        <button id="btnImprimirDia" class="btn-secondary" style="display:none;">🖨️ Imprimir</button>
+      </div>
+
+      <div id="loadingPacientes" class="loading" style="display:none;">Carregando pacientes...</div>
+      
+      <div id="resultadoPacientesDia">
+        <!-- Resultado será inserido aqui -->
+      </div>
+    </section>
+
+  </main>
+
+  <script src="admin.js"></script>
+</body>
+</html>

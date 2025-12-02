@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agendamento de Consultas</title>
+  <link rel="stylesheet" href="agendamento.css">
+</head>
+<body>
+
+  <header>
+    <h1>🦷 Agendamento de Consultas</h1>
+  </header>
+
+  <main>
+    <h2>Agendar Consulta</h2>
+
+      <div style="display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; justify-content: center;">
+        <button onclick="window.location.href='cadastro.html'" class="btnCadastroPaciente">
+          ➕ Cadastrar Paciente
+        </button>
+        <button onclick="window.location.href='login.html'" class="btnRelatorio">
+          👨‍⚕️ Painel Administrativo
+        </button>
+      </div>
+
+      <!-- Busca de paciente -->
+      <div class="busca-paciente">
+        <label>CPF do Paciente</label>
+        <input type="text" id="cpfInput" placeholder="Digite o CPF" required>
+        <div id="pacienteInfo"></div>
+      </div>
+
+      <!-- Seleção de serviço -->
+      <div class="selecao-servico" id="selecaoServico" style="display:none;">
+        <label>Selecione o Serviço</label>
+        <select id="servicoSelect" required>
+          <option value="">Selecione...</option>
+          <option value="Limpeza">Limpeza</option>
+          <option value="Obturação">Obturação</option>
+          <option value="Canal">Canal</option>
+        </select>
+      </div>
+
+      <!-- Calendário -->
+      <div class="calendario-container" id="calendarioContainer" style="display:none;">
+        <div class="calendario-header">
+          <button id="mesAnterior">◀</button>
+          <h3 id="mesAnoTitulo"></h3>
+          <button id="mesSeguinte">▶</button>
+        </div>
+        <div id="calendario" class="calendario-grid"></div>
+      </div>
+
+      <!-- Horários disponíveis -->
+      <div class="horarios-container" id="horariosContainer" style="display:none;">
+        <h3>Horários Disponíveis - <span id="dataSelecionada"></span></h3>
+        <div id="horariosGrid" class="horarios-grid"></div>
+      </div>
+
+      <!-- Observações e confirmação -->
+      <div class="observacoes-container" id="observacoesContainer" style="display:none;">
+        <div id="resumoAgendamento" class="resumo-agendamento" style="display:none;"></div>
+        <label>Observações (opcional)</label>
+        <textarea id="obsInput" placeholder="Alguma observação sobre o agendamento?"></textarea>
+        <button id="btnConfirmarAgendamento" class="btn-confirmar">✓ Confirmar Agendamento</button>
+      </div>
+
+      <div id="formMsg"></div>
+  </main>
+
+  <script src="agendamento.js"></script>
+</body>
+</html>

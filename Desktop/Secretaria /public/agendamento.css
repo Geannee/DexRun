@@ -1,0 +1,778 @@
+:root {
+  --dourado: #D4AF37;
+  --dourado-escuro: #B8960F;
+  --dourado-claro: #F4E5B8;
+  --preto: #0A0A0A;
+  --preto-suave: #1A1A1A;
+  --branco: #FFFFFF;
+  --cinza-claro: #F5F5F5;
+  --sombra: rgba(212, 175, 55, 0.3);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+  background: #FAF3E0;
+  color: var(--preto);
+  min-height: 100vh;
+}
+
+header {
+  background: #FFFFFF;
+  padding: 20px 25px;
+  color: var(--dourado);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 3px solid var(--dourado);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+header h1 {
+  font-size: 24px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0;
+  color: var(--dourado);
+}
+
+main {
+  max-width: 1200px;
+  margin: 30px auto;
+  background: #FFFFFF;
+  padding: 30px;
+  border-radius: 12px;
+  border: 2px solid var(--dourado);
+  box-shadow: 0 8px 30px var(--sombra);
+}
+
+main h2 {
+  margin-bottom: 30px;
+  color: var(--dourado);
+  font-size: 28px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: center;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+main h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--dourado), transparent);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+form input, form select, form textarea {
+  padding: 14px;
+  border: 2px solid var(--dourado-claro);
+  border-radius: 8px;
+  font-size: 15px;
+  font-family: inherit;
+  background: var(--branco);
+  transition: all 0.3s;
+}
+
+form input:focus, form select:focus, form textarea:focus {
+  outline: none;
+  border-color: var(--dourado);
+  box-shadow: 0 0 10px var(--sombra);
+}
+
+form button {
+  padding: 16px;
+  background: linear-gradient(135deg, var(--dourado) 0%, var(--dourado-escuro) 100%);
+  color: var(--preto);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 15px var(--sombra);
+  transition: all 0.3s;
+}
+
+form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px var(--sombra);
+  background: linear-gradient(135deg, var(--dourado-escuro) 0%, var(--dourado) 100%);
+}
+
+.msg {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.msg.success { color: #00bfa5; }
+.msg.error { color: #e63946; }
+
+/* Estilos para informações do paciente */
+#pacienteInfo {
+  margin: 20px 0;
+  padding: 0;
+  border-radius: 12px;
+}
+
+.paciente-encontrado {
+  background: linear-gradient(135deg, var(--dourado-claro) 0%, var(--branco) 100%);
+  border: 3px solid var(--dourado);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px var(--sombra);
+}
+
+.paciente-encontrado p {
+  margin: 8px 0;
+  color: var(--preto);
+  font-size: 15px;
+}
+
+.paciente-encontrado p:first-child {
+  color: var(--dourado-escuro);
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.paciente-nao-encontrado {
+  background: #FFFFFF;
+  border: 3px solid var(--dourado);
+  padding: 25px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.paciente-nao-encontrado p {
+  margin: 12px 0;
+  color: var(--dourado);
+  font-size: 15px;
+}
+
+.paciente-nao-encontrado p:first-child {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.btnCadastrar {
+  margin-top: 15px;
+  padding: 12px 25px;
+  background: #ff5722;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.btnCadastrar:hover {
+  background: #e64a19;
+  transform: scale(1.05);
+}
+
+/* Estilos para busca de paciente e serviço */
+.busca-paciente, .selecao-servico {
+  margin: 25px 0;
+}
+
+.busca-paciente label, .selecao-servico label {
+  display: block;
+  margin-bottom: 12px;
+  font-weight: 600;
+  color: var(--dourado);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 13px;
+}
+
+.busca-paciente input, .selecao-servico select {
+  width: 100%;
+  padding: 14px;
+  border: 2px solid rgba(212, 175, 55, 0.3);
+  border-radius: 8px;
+  font-size: 15px;
+  background: #FFFFFF;
+  color: var(--preto);
+  transition: all 0.3s ease;
+}
+
+.busca-paciente input:focus, .selecao-servico select:focus {
+  outline: none;
+  border-color: var(--dourado);
+  background: #FFFFFF;
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+}
+
+.busca-paciente input::placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.selecao-servico select {
+  cursor: pointer;
+}
+
+.selecao-servico select option {
+  background: #FFFFFF;
+  color: var(--preto);
+}
+
+/* Calendário */
+.calendario-container {
+  margin: 30px 0;
+  background: #FFFFFF;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+  border: 2px solid var(--dourado);
+}
+
+.calendario-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.calendario-header button {
+  background: linear-gradient(135deg, var(--dourado) 0%, var(--dourado-escuro) 100%);
+  color: var(--preto);
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px var(--sombra);
+}
+
+.calendario-header button:hover {
+  background: linear-gradient(135deg, var(--dourado-claro) 0%, var(--dourado) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(212, 175, 55, 0.4);
+}
+
+.calendario-header h3 {
+  margin: 0;
+  color: var(--dourado);
+  font-size: 24px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.calendario-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+}
+
+.dia-semana {
+  text-align: center;
+  font-weight: bold;
+  padding: 12px;
+  background: linear-gradient(135deg, var(--dourado) 0%, var(--dourado-escuro) 100%);
+  color: var(--preto);
+  border-radius: 8px;
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+
+.dia-vazio {
+  padding: 15px;
+  background: transparent;
+}
+
+.dia-mes {
+  text-align: center;
+  padding: 18px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  font-size: 16px;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dia-mes.passado {
+  background: rgba(128, 128, 128, 0.2);
+  color: #666;
+  cursor: not-allowed;
+  border: 1px solid rgba(128, 128, 128, 0.3);
+}
+
+.dia-mes.disponivel {
+  background: linear-gradient(135deg, rgba(76, 175, 80, 0.3) 0%, rgba(46, 125, 50, 0.3) 100%);
+  color: var(--dourado-claro);
+  border: 2px solid rgba(76, 175, 80, 0.5);
+}
+
+.dia-mes.disponivel:hover {
+  background: linear-gradient(135deg, rgba(76, 175, 80, 0.5) 0%, rgba(46, 125, 50, 0.5) 100%);
+  transform: scale(1.05);
+  border-color: var(--dourado);
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+}
+
+.dia-mes.parcial {
+  background: linear-gradient(135deg, rgba(255, 193, 7, 0.3) 0%, rgba(255, 160, 0, 0.3) 100%);
+  color: var(--dourado);
+  border: 2px solid rgba(255, 193, 7, 0.5);
+}
+
+.dia-mes.parcial:hover {
+  background: linear-gradient(135deg, rgba(255, 193, 7, 0.5) 0%, rgba(255, 160, 0, 0.5) 100%);
+  transform: scale(1.05);
+  border-color: var(--dourado);
+  box-shadow: 0 4px 15px rgba(255, 193, 7, 0.3);
+}
+
+.dia-mes.lotado {
+  background: linear-gradient(135deg, rgba(244, 67, 54, 0.3) 0%, rgba(198, 40, 40, 0.3) 100%);
+  color: #999;
+  cursor: not-allowed;
+  border: 2px solid rgba(244, 67, 54, 0.5);
+  opacity: 0.6;
+  position: relative;
+  pointer-events: none;
+}
+
+.dia-mes.lotado::after {
+  content: '✗';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+  color: rgba(244, 67, 54, 0.7);
+  font-weight: bold;
+}
+
+.dia-mes.lotado:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.dia-mes.bloqueado {
+  background: linear-gradient(135deg, rgba(100, 100, 100, 0.3) 0%, rgba(50, 50, 50, 0.3) 100%);
+  color: #666;
+  cursor: not-allowed;
+  border: 2px solid rgba(100, 100, 100, 0.5);
+  opacity: 0.5;
+  position: relative;
+}
+
+.dia-mes.bloqueado::after {
+  content: '🚫';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+  opacity: 0.7;
+}
+
+.dia-mes.bloqueado:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.dia-mes.selecionado {
+  border: 3px solid var(--dourado) !important;
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+  background: linear-gradient(135deg, var(--dourado-escuro) 0%, var(--dourado) 100%) !important;
+  color: var(--preto) !important;
+  transform: scale(1.08);
+}
+
+/* Horários */
+.horarios-container {
+  margin: 30px 0;
+  background: #FFFFFF;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+  border: 2px solid var(--dourado);
+}
+
+.horarios-container h3 {
+  margin-bottom: 25px;
+  color: var(--dourado);
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.horarios-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 12px;
+}
+
+.horario-slot {
+  text-align: center;
+  padding: 18px 12px;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+.horario-slot.livre {
+  background: linear-gradient(135deg, rgba(76, 175, 80, 0.3) 0%, rgba(46, 125, 50, 0.3) 100%);
+  color: var(--dourado-claro);
+  border: 2px solid rgba(76, 175, 80, 0.5);
+}
+
+.horario-slot.livre:hover {
+  background: linear-gradient(135deg, rgba(76, 175, 80, 0.5) 0%, rgba(46, 125, 50, 0.5) 100%);
+  transform: scale(1.05);
+  border-color: var(--dourado);
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+}
+
+.horario-slot.ocupado {
+  background: linear-gradient(135deg, rgba(244, 67, 54, 0.3) 0%, rgba(198, 40, 40, 0.3) 100%);
+  color: #999;
+  cursor: not-allowed;
+  opacity: 0.5;
+  border: 2px solid rgba(244, 67, 54, 0.3);
+  position: relative;
+  pointer-events: none;
+}
+
+.horario-slot.ocupado::before {
+  content: '✗';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+  color: rgba(244, 67, 54, 0.6);
+  font-weight: bold;
+}
+
+.horario-slot.ocupado:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.horario-slot.selecionado {
+  border: 3px solid var(--dourado) !important;
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+  background: linear-gradient(135deg, var(--dourado-escuro) 0%, var(--dourado) 100%) !important;
+  color: var(--preto) !important;
+  transform: scale(1.08);
+}
+
+/* Observações */
+.observacoes-container {
+  margin: 30px 0;
+}
+
+.observacoes-container label {
+  display: block;
+  margin-bottom: 12px;
+  font-weight: 600;
+  color: var(--dourado);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 13px;
+}
+
+.resumo-agendamento {
+  background: #FAF3E0;
+  border: 2px solid rgba(212, 175, 55, 0.3);
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 16px;
+  color: var(--preto);
+}
+
+.resumo-agendamento h4 {
+  color: var(--dourado);
+  margin: 0 0 10px 0;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.resumo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 8px 16px;
+}
+
+.resumo-item {
+  font-size: 14px;
+}
+
+.resumo-item strong {
+  color: var(--dourado-claro);
+}
+
+.observacoes-container textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: 14px;
+  border: 2px solid rgba(212, 175, 55, 0.3);
+  border-radius: 8px;
+  font-size: 15px;
+  font-family: inherit;
+  resize: vertical;
+  background: #FFFFFF;
+  color: var(--preto);
+  transition: all 0.3s ease;
+}
+
+.observacoes-container textarea:focus {
+  outline: none;
+  border-color: var(--dourado);
+  background: #FFFFFF;
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+}
+
+.observacoes-container textarea::placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.btn-confirmar {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, var(--dourado) 0%, var(--dourado-escuro) 100%);
+  color: var(--preto);
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  margin-top: 25px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px var(--sombra);
+}
+
+.btn-confirmar:hover {
+  background: linear-gradient(135deg, var(--dourado-claro) 0%, var(--dourado) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+}
+
+.btn-confirmar:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 10px var(--sombra);
+}
+
+.btnCadastroPaciente {
+  padding: 14px 24px;
+  background: linear-gradient(135deg, var(--dourado) 0%, var(--dourado-escuro) 100%);
+  color: var(--preto);
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  margin: 8px 0;
+  box-shadow: 0 4px 15px var(--sombra);
+  font-size: 14px;
+}
+
+.btnCadastroPaciente:hover {
+  background: linear-gradient(135deg, var(--dourado-claro) 0%, var(--dourado) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+}
+
+.btnListaPacientes {
+  padding: 14px 24px;
+  background: linear-gradient(135deg, var(--dourado) 0%, var(--dourado-escuro) 100%);
+  color: var(--preto);
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  margin: 8px 0;
+  box-shadow: 0 4px 15px var(--sombra);
+  font-size: 14px;
+}
+
+.btnListaPacientes:hover {
+  background: linear-gradient(135deg, var(--dourado-claro) 0%, var(--dourado) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+}
+
+.btnRelatorio {
+  padding: 14px 24px;
+  background: linear-gradient(135deg, var(--dourado) 0%, var(--dourado-escuro) 100%);
+  color: var(--preto);
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  margin: 8px 0;
+  box-shadow: 0 4px 15px var(--sombra);
+  font-size: 14px;
+}
+
+.btnRelatorio:hover {
+  background: linear-gradient(135deg, var(--dourado-claro) 0%, var(--dourado) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  main {
+    margin: 20px 15px;
+    padding: 20px;
+  }
+  
+  header {
+    padding: 15px 20px;
+  }
+  
+  header h1 {
+    font-size: 18px;
+  }
+  
+  main h2 {
+    font-size: 22px;
+  }
+  
+  .calendario-grid {
+    gap: 5px;
+  }
+  
+  .dia-mes {
+    padding: 12px 5px;
+    font-size: 13px;
+    min-height: 50px;
+  }
+  
+  .dia-semana {
+    padding: 8px;
+    font-size: 11px;
+  }
+  
+  .horarios-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 8px;
+  }
+  
+  .horario-slot {
+    padding: 14px 8px;
+    font-size: 14px;
+  }
+  
+  .calendario-header h3 {
+    font-size: 20px;
+  }
+  
+  .calendario-header button {
+    padding: 10px 18px;
+    font-size: 16px;
+  }
+  
+  .btnCadastroPaciente,
+  .btnListaPacientes,
+  .btnRelatorio {
+    width: 100%;
+  }
+}
+
+@media (min-width: 769px) {
+  main {
+    margin: 40px auto;
+    padding: 40px;
+  }
+  
+  .btnCadastroPaciente,
+  .btnListaPacientes,
+  .btnRelatorio {
+    width: auto;
+    min-width: 200px;
+    display: inline-block;
+    margin: 8px 5px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .calendario-grid {
+    gap: 12px;
+  }
+  
+  .dia-mes {
+    padding: 20px 10px;
+    font-size: 18px;
+  }
+  
+  .horarios-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 15px;
+  }
+}
+
+/* Mensagens de sucesso/erro */
+#formMsg {
+  margin-top: 20px;
+  font-weight: bold;
+  text-align: center;
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+#formMsg.success {
+  color: var(--dourado-claro);
+  background: rgba(76, 175, 80, 0.2);
+  border: 2px solid rgba(76, 175, 80, 0.5);
+}
+
+#formMsg.error {
+  color: #ff6b6b;
+  background: rgba(244, 67, 54, 0.2);
+  border: 2px solid rgba(244, 67, 54, 0.5);
+}
